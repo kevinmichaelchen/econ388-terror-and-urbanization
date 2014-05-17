@@ -1,0 +1,120 @@
+\documentclass[preprint,2p,12pt]{elsarticle}
+
+\journal{Professor Sheppard - ECON 388}
+
+\begin{document}
+
+\begin{frontmatter}
+\title{Urbanization in Climates of Terror}
+\author[kevin]{K.~Chen}
+\address[kevin]{Williams College}
+
+\begin{abstract}
+The impact of terrorism on cities and urban form is a fairly unexplored question. Past economists have studied the effect of war on urban growth and have concluded that cities bounce back in the long-run. This paper tries to explore what happens to cities in the wake of a terrorist incident and, more importantly, what effect does an anticipation or ``climate'' of terror have on urban form? Do cities get more compact or dispersed? Do they change temporarily or permanently? Using a global sample of data, this paper attempts to further answer these questions by exploring different types of climates of terror, stratified by region, the frequency of terrorist incidents, and the magnitude of attacks.
+\end{abstract}
+
+\begin{keyword}
+terrorism \sep urbanization \sep urban economics
+\end{keyword}
+
+\end{frontmatter}
+
+
+\section*{Acknowledgements}
+Professor Stephen Sheppard. ``National Consortium for the Study of Terrorism and Responses to Terrorism (START). (2012). Global Terrorism Database [Data file]. Retrieved from http://www.start.umd.edu/gtd''
+
+
+\section{Introduction}
+\begin{enumerate}
+\item Why do cities exist?
+\item Why does terrorism exist?
+\item What should be done in response to climates of terror?
+\item The systematic approach of this paper using city land use data.
+\end{enumerate}
+
+\section{Theory}
+
+Various theoretical approaches to this question:
+\begin{enumerate}
+\item Rossi-Hansberg (2004)
+  \begin{enumerate}
+  \item Based on Lucas (2001) and Lucas and Rossi-Hansberg (2002)
+  \end{enumerate}
+\item Harrigan and Martin (2002)
+  \begin{enumerate}
+  \item Based on Krugman (1991) - new economic geography model
+  \item Firms shocked, volatile wages, workers locate near large number of firms to smooth wage variability 
+  \end{enumerate}
+\item Determinants of urban structure and expansion
+  \begin{enumerate}
+  \item Expansion is limited by the environment, demand for land, and policy.
+  \item Standard urban spatial equilibrium model: $L$ households with income $y$ and preferences stemming from a quasi-concave utility function $v(c,q)$, where $c$ is the consumption of a composite good and $q$ is square unit of housing. Each household worker commutes to the central business district (CBD). At $x$ units of distance from the CBD, the worker's annual transportation costs are $t \times x$, and the cost per square unit of housing is $p(x)$. In equilibrium, all households have equal utility $\max_{q} v(y - t \cdot x - q \cdot p(x), q) = u$. 
+  
+  The housing production function $H(N, l)$ depends on capital $N$ and land $l$. The equilibrium land rent function is $r(x)$ and the capital-land ratio (building density) is $S(x)$, such that $\frac{\partial r(x)}{\partial x} < 0$ and $\frac{\partial S(x)}{\partial x} < 0$, which means that land rents (value) and building density decrease with distance from the CBD. Derived from this is the population density $D(x,t,y,u)$, with the last three functional parameters being exogenously fed into the model.
+
+  The city's radius $\overline{x}$ is determined by housing developers' ability to bid land away from its alternative (i.e., agricultural) uses, denoted by $r_A$. Thus, the city's maximum extent is given by $r(\overline{x}) = r_A$.
+
+  Finally, the model requires that all $L$ households fit within the urban periphery. This is ensured by $L = \int_{0}^{\overline{x}} \! 2 \pi \cdot \theta \cdot x \cdot D(x,t,y,u) \, \mathrm{d}x$, where $\theta$ is the share of land available for public development.
+  \end{enumerate}
+
+\item Impact of terrorism on urban structure
+  \begin{enumerate}
+  \item Harrigan and Martin (2002) use a labor pooling and core-periphery model to study the impact of terrorist incidents on urban centers. When an attack is more probable, all firms are affected by increased risk of wage variability, and labor pooling becomes less advantageous to workers.
+  \item Terrorism, unlike war and conflict, is hardly ever stopped with a truce. For this reason, the impact of terrorism on urban structure cannot be compared with the impact of war on urban structure. Davis and Weinstein (2002) found that the Japanese urban system eventually bounced back to pre-war levels, but this may only have been possible because the war stopped. Under the perpetual threat of terrorism, an urban system might not do as well.
+  \item That said, Harrigan and Martin find that a one-time terrorist incident has no long-run impact on the allocation of production and capital. However, a persistent presence of terrorism in an urban primate leads to an equilibrium with a smaller population -- that is, a long-run decrease in city size.
+  \item Rossi-Hansberg (2004) is more complex, as they take into consideration the structure of urban areas and the response to terrorism. Their model emphasizes firm interactions. Firms have incentive to cluster together, but because of ``absentee landlords'' they cannot reap the benefits they create and consequently do not cluster enough.\footnote{TODO what does this mean?} 
+
+Because terrorists target locations with a high density of investment, firms are less likely to cluster. A subsidy for urban location can increase clustering, agglomeration, and thus factor productivty.
+  \item Rossi-Hansberg proves that a terrorist attack:
+    \begin{enumerate}
+    \item decreases investment in residential areas in a steady state
+    \item decreases the range of capital levels (i.e., flattens the capital density gradient). Houses in the city become not much more expensive than those on the periphery.
+    \item decreases productivity in nearby areas, slows recovery
+    \end{enumerate]
+    
+  \end{enumerate}
+
+%end of theory points
+\end{enumerate}
+
+
+\section{Data}
+Data on urban land cover. Global sample of cities. Population for jurisdictional areas within each city, country-wide income, country-wide terrorist incidents. Use of national variables where local data is unavailable. Assume national income is exogenous to city land use.
+
+Randomly sample $n$ cities out of a larger sample compiled by UN Habitat Urban Observatory program, which is supposed to be representative of the global urban population of cities with populations of over 100,000.
+
+Sheppard advises against city-specific data on terrorism. ``In addition to posing greater problems of endogeneity, using city specific measures may significantly understate the `climate of terror' or `atmosphere of fear and alarm' that seems intrinsic to the problem of terrorism. Recent experience in both the US and UK, for example, suggests that individuals and organizations in cities far removed (and less significant) than the cities actually attacked still behave \emph{as if} they were confronted by a serioues risk of attack.''\footnote{TODO source?}
+
+\section{Analysis}
+Use of RAND data from Professor Sheppard, as well as the Global Terrorism Database (GTD) provided by UMD. GTD provides longitudinal data on terrorist incidents from 1970 to 2012. Coded in each instance are variables for the perpetrator group name, latitude and longitude coordinates, incident date, region, nationality of the target, types of weapons used, the amount of damage, the number of fatalities and injured, and whether the attack was considered successful.
+
+
+\section{Conclusion}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{sheppard05}
+  Stephen Sheppard,
+  \emph{Urban Structure in a Climate of Terror}.
+  Munich, Germany,
+  2005.
+
+\bibitem{harrigan02}
+  Harrigan, J and Martin, P.
+  \emph{Terrorism and the Resilience of Cities},
+  Federal Reserve Board of New York Economic Policy Review,
+  97-116,
+  2002.
+
+\bibitem{glaeser02}
+  Glaeser, E. and Shapiro, J.
+  \emph{Cities and Warfare: The Impact of Terrorism on Urban Form},
+  Journal of Urban Economics,
+  51, 205-224,
+  2002.
+
+\end{thebibliography}
+
+
+\end{document}

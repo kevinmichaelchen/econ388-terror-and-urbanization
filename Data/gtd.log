@@ -1,0 +1,70 @@
+-------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/kmchen1/Desktop/ECON388/Final/gtd.log
+  log type:  text
+ opened on:  11 May 2014, 22:46:24
+
+. 
+. insheet using "/Users/kmchen1/Desktop/ECON388/Final/gtd.csv", comma
+(133 vars, 113113 obs)
+
+. 
+. * order *, sequential
+. 
+. gen atk_assassination   = attacktype1 == 1 if !missing(attacktype1)
+
+. gen atk_hijack                  = attacktype1 == 2 if !missing(attacktype1)
+
+. gen atk_kidnap                  = attacktype1 == 3 if !missing(attacktype1)
+
+. gen atk_barricade               = attacktype1 == 4 if !missing(attacktype1)
+
+. gen atk_bomb                    = attacktype1 == 5 if !missing(attacktype1)
+
+. gen atk_unknown                 = attacktype1 == 6 if !missing(attacktype1)
+
+. gen atk_armed                   = attacktype1 == 7 if !missing(attacktype1)
+
+. gen atk_unarmed                 = attacktype1 == 8 if !missing(attacktype1)
+
+. gen atk_facility                = attacktype1 == 9 if !missing(attacktype1)
+
+. 
+. gen wep_bio                             = weaptype1 == 1 if !missing(weaptype1)
+
+. gen wep_chem                    = weaptype1 == 2 if !missing(weaptype1)
+
+. gen wep_radio                   = weaptype1 == 3 if !missing(weaptype1)
+
+. gen wep_nuclear                 = weaptype1 == 4 if !missing(weaptype1)
+
+. gen wep_firearms                = weaptype1 == 5 if !missing(weaptype1)
+
+. gen bomb                                = weaptype1 == 6 if !missing(weaptype1)
+
+. 
+. *mean nkill if bomb 
+. 
+. regress nkill atk_bomb
+
+      Source |       SS       df       MS              Number of obs =  106099
+-------------+------------------------------           F(  1,106097) =    0.20
+       Model |  24.2268017     1  24.2268017           Prob > F      =  0.6577
+    Residual |    13094408106097  123.419211           R-squared     =  0.0000
+-------------+------------------------------           Adj R-squared = -0.0000
+       Total |  13094432.2106098  123.418276           Root MSE      =  11.109
+
+------------------------------------------------------------------------------
+       nkill |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+    atk_bomb |   -.209667   .4732311    -0.44   0.658    -1.137194    .7178595
+       _cons |    2.29631   .0341958    67.15   0.000     2.229286    2.363333
+------------------------------------------------------------------------------
+
+. 
+. log close
+      name:  <unnamed>
+       log:  /Users/kmchen1/Desktop/ECON388/Final/gtd.log
+  log type:  text
+ closed on:  11 May 2014, 22:46:31
+-------------------------------------------------------------------------------------
