@@ -1,6 +1,7 @@
-setwd("/Users/kmchen1/Desktop/ECON388/Final/Data")
+PATH <- "/Users/kmchen1/Desktop/ECON388/Final/data/"
+setwd(PATH)
 list.files()
-gtd <- read.csv("gtd.csv")
+gtd <- read.csv(paste0(PATH, "gtd/gtd.csv"))
 
 View(gtd)
 names(gtd)

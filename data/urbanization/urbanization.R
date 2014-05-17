@@ -1,8 +1,9 @@
-setwd("/Users/kmchen1/Desktop/ECON388/Final/urbanization")
+PATH <- "~/Desktop/ECON388/Final/data/"
+setwd(PATH)
 list.files()
 
-gtd <- read.csv("/Users/kmchen1/Desktop/ECON388/Final/Data/gtd.csv")
-wb <- read.csv("data.csv")
+gtd <- read.csv(paste0(PATH, "gtd/gtd.csv"))
+wb <- read.csv(paste0(PATH, "urbanization/urbanization.csv"))
 
 # Rename world bank columns
 def = c("Country.Name", "Country.Code", "Indicator.Name", "Indicator.Code")
