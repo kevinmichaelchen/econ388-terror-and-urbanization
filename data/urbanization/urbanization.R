@@ -15,6 +15,14 @@ cols = c(def, years)
 names(wb) <- cols
 
 
+#' Used for copying the dataset to a new csv file
+#' don't add a row.names/numbers column
+#' don't check.names, don't prepend 'X' to all headers
+update <- function() {
+  write.csv(wb, file="new_urban.csv", row.names=FALSE)
+  df <- read.csv("new_urban.csv", check.names=FALSE)
+  View(df)
+}
 
 #' For testing, to see what bits of gtd.only
 #' are found in wb.only
@@ -94,7 +102,6 @@ gtd.only <- sort(setdiff(gtd$country_txt, wb$Country.Name)) # GTD ONLY
 #  country = gtd.only[i]
 #  print(paste0(country, ": ", nrow(gtd[gtd$country_txt == country,])))
 #}
-
 
 
 
