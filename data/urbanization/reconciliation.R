@@ -1,7 +1,31 @@
+#' This script is mainly responsible for putting
+#' World Bank country codes in the GTD data.
+#' This reconciles the name discrepancy problem.
+#' The new GTD dataset is saved in new_gtd.csv.
+#' This script should really only be run once
+#' as a preprocessing step. The next step will
+#' be to combine urban statistics with the GTD.
+#' That is, if a terrorist attack occurred in 2005
+#' in Afghanistan, we add a column called
+#' gtd$urban_growth, which corresponds to that 
+#' country's urban growth rate in the year of the attack.
+
 PATH <- "~/Desktop/ECON388/Final/data/"
+GTD_PATH <- paste0(PATH, "gtd/")
+URB_PATH <- paste0(PATH, "urbanization/")
 setwd(PATH)
-gtd <- read.csv(paste0(PATH, "gtd/gtd.csv"))
-wb <- read.csv(paste0(PATH, "urbanization/urbanization.csv"))
+gtd <- read.csv(paste0(GTD_PATH, "new_gtd.csv"))
+wb <- read.csv(paste0(URB_PATH, "new_urban.csv"))
+
+
+#' Used for copying the World Bank dataset to a new csv file
+#' don't add a row.names/numbers column
+#' don't check.names, don't prepend 'X' to all headers
+update <- function() {
+  write.csv(wb, file=paste0(URB_PATH, "new_urban.csv"), row.names=FALSE)
+  df <- read.csv(paste0(URB_PATH, "new_urban.csv"), check.names=FALSE)
+  View(df)
+}
 
 # Rename world bank columns
 renameYears <- function() {
@@ -11,19 +35,12 @@ renameYears <- function() {
     years[i - 1970 + 1] = i
   }
   cols = c(def, years)
-  names(wb) <- cols
+  names(wb) <<- cols
   update()  
 }
+#renameYears()
 
 
-#' Used for copying the World Bank dataset to a new csv file
-#' don't add a row.names/numbers column
-#' don't check.names, don't prepend 'X' to all headers
-update <- function() {
-  write.csv(wb, file="new_urban.csv", row.names=FALSE)
-  df <- read.csv("new_urban.csv", check.names=FALSE)
-  View(df)
-}
 
 #' For testing, to see what bits of gtd.only
 #' are found in wb.only
@@ -117,7 +134,7 @@ gtd$world_bank_code <- "AFG"
 #' Fills in the World Bank country code column in GTD data. 
 #' @param code The value of the World Bank country code.
 #' @param country_text The key, i.e., the gtd$country_txt
-add_gtd_country_code <- function(code, country_text) { gtd$world_bank_code[which(gtd$country_txt == country_text)] <- code }
+add_gtd_country_code <- function(code, country_text) { gtd$world_bank_code[which(gtd$country_txt == country_text)] <<- code }
 
 add_gtd_country_code("Albania", "ALB")
 add_gtd_country_code("ALB", "Albania")
@@ -389,3 +406,9 @@ add_gtd_country_code("", "Yugoslavia")
 
 add_gtd_country_code("ZMB", "Zambia")
 add_gtd_country_code("ZWE", "Zimbabwe")
+
+
+#write.csv(gtd, file=paste0(GTD_PATH, "new_gtd.csv"), row.names=FALSE)
+#new.gtd <- read.csv(paste0(GTD_PATH, "new_gtd.csv"), check.names=FALSE)
+#View(new.gtd)
+#View(gtd)
