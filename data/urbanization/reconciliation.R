@@ -14,8 +14,9 @@ PATH <- "~/Desktop/ECON388/Final/data/"
 GTD_PATH <- paste0(PATH, "gtd/")
 URB_PATH <- paste0(PATH, "urbanization/")
 setwd(PATH)
+list.files()
 gtd <- read.csv(paste0(GTD_PATH, "new_gtd.csv"))
-wb <- read.csv(paste0(URB_PATH, "new_urban.csv"), check.names=FALSE)
+wb <- read.csv(paste0(URB_PATH, "urbanization.csv"), check.names=FALSE)
 
 
 #' Used for copying the World Bank dataset to a new csv file
@@ -32,7 +33,7 @@ renameYears <- function() {
   def = c("Country.Name", "Country.Code", "Indicator.Name", "Indicator.Code")
   years = rep(0, 2012-1970+1)
   for (i in 1970:2012) {
-    years[i - 1970 + 1] = i
+    years[i - 1970 + 1] = paste0("Y", as.character(i))
   }
   cols = c(def, years)
   names(wb) <<- cols
