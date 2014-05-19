@@ -127,9 +127,23 @@ Unlike Sheppard, we use data on terrorist incidents collected from the Global Te
 
 Furthermore, what sets this paper apart from all others is its analysis of the impact of terrorism on urbanization rates. Whereas Sheppard analyzed the change in urban form -- that is, the difference in urban development between two periods -- we aim to analyze the rates at which rural workers migrate into the city. Of course, this is the natural consequence of not being able to obtain satellite data, which would have created opportunities to study a few loose ends, such as the impact of terrorism on the capital density gradient. 
 
-With urbanization rates in mind, we retrieve data from the World Bank Indicators dataset. We look at 214 countries across 43 years.
+With urbanization rates in mind, we retrieve data from the World Bank Indicators dataset. We look at 214 countries across 43 years, from 1970 to 2012.
+The three urbanization statistics we consider are: absolute urban population, urbanization level (i.e., urban population as a percent of total country population), and annual urban population growth rate.
 
+\subsection{Challenges}
+There are several challenges we face when running a regression that draws from two different datasets.
+First, there is discrepancy between country names: one dataset uses Ivory Coast, the other C\^{o}te d'Ivoir.
+Second, some countries are present in one dataset but not in the other. 
 
+Third, the GTD makes a distinction between countries that have been dissolved and reunified, whereas the World Bank data does not.
+For instance, the GTD documents terrorist attack data for West Germany, East Germany, and Germany, whereas the World Bank uses Germany.
+Because this is a rare case of reunification -- the case of South Yemen and North Yemen reunifying into Yemen is another -- we treat terrorist incidents in West Germany and East Germany as having an impact on the urbanization of modern-day Germany.
+In general, however, we ignore terrorist data for former countries that have undergone long, intricate histories of secession and dissolution.
+For instance, we simply ignore attacks that occurred in Yugoslavia, instead of treating them as having occurred in Slovenia, Croatia, Bosnia and Herzegovina, Macedonia, Serbia, and Montenegro. We do this for simplicity, and we acknowledge that it is an imperfection.
+
+Fourth, we deliberate over how to treat terrorist attacks that occurred in overseas territories -- such as Corsica (France), the Falkland Islands (UK), and the Faroe Islands (Denmark).
+We can either ignore incidents, treat them as attacks in the ``mother'' country, or treat them as attacks in one or two of the most proximate nations.
+We treat Corsica and Guadeloupe as France, since they have large populations and are deemed ``integrated''. We ignore all other cases
 \section{Analysis}
 
 

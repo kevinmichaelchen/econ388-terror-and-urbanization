@@ -32,10 +32,11 @@ INDICATORS <- c(
   "Urban population (% of total)",
   "Urban population growth (annual %)")
 
+
+#' ATTEMPTING TO PUT WORLD BANK COLUMN IN GTD USING data.table
 if ("data.table" %in% row.names(installed.packages())  == FALSE) install.packages("data.table") 
 require("data.table")
 new.gtd <- data.table(gtd, keep.rownames = TRUE)
-
 new.gtd$urban_growth <- NA
 names(new.gtd)[135]
 for (row in 1:10) {
@@ -47,14 +48,5 @@ for (row in 1:10) {
 View(head(new.gtd)$urban_growth)
 
 
+#' ATTEMPTING TO PUT WORLD BANK COLUMN IN GTD
 gtd['urban_growth'] <- extract(gtd$world_bank_code, INDICATORS[3], gtd$iyear)
-
-
-DT <- data.table(x = 1:5, y = 6:10, z = 11:15)
-DT[2, y := DT[5, y]]
-DT
-for (row in 1:nrow(DT)) {
-  for (col in 1:ncol(DT)) {
-    DT[row, y := DT[row, z]]
-  }
-}
