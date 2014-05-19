@@ -51,7 +51,7 @@ replace world_bank_code = "COM" if country_txt == "Comoros"
 replace world_bank_code = "COG" if country_txt == "Congo (Brazzaville)"
 replace world_bank_code = "ZAR" if country_txt == "Congo (Kinshasa)"
 
-**** Treat Corsica as France
+**** Treat Corsica (pop 322k) as France
 replace world_bank_code = "FRA" if country_txt == "Corsica"
 
 replace world_bank_code = "CRI" if country_txt == "Costa Rica"
@@ -60,7 +60,7 @@ replace world_bank_code = "CUB" if country_txt == "Cuba"
 replace world_bank_code = "CYP" if country_txt == "Cyprus"
 replace world_bank_code = "CZE" if country_txt == "Czech Republic"
 
-**** There is no more Czechoslovakia.
+**** There is no more Czechoslovakia. Could treat as CZE/Czech Republic and 
 replace world_bank_code = "" if country_txt == "Czechoslovakia"
 
 replace world_bank_code = "DNK" if country_txt == "Denmark"
@@ -148,7 +148,7 @@ replace world_bank_code = "MDV" if country_txt == "Maldives"
 replace world_bank_code = "MLI" if country_txt == "Mali"
 replace world_bank_code = "MLT" if country_txt == "Malta"
 
-**** No urbanization data for Martinique. Could treat as FRA/France
+**** No urbanization data for Martinique (pop 386k). Treat as FRA/France?
 replace world_bank_code = "" if country_txt == "Martinique"
 
 replace world_bank_code = "MRT" if country_txt == "Mauritania"
@@ -209,7 +209,10 @@ replace world_bank_code = "" if country_txt == "Serbia-Montenegro"
 replace world_bank_code = "SYC" if country_txt == "Seychelles"
 replace world_bank_code = "SLE" if country_txt == "Sierra Leone"
 replace world_bank_code = "SGP" if country_txt == "Singapore"
+
+**** 1939-1945, existed on present-day Slovakia
 replace world_bank_code = "SVK" if country_txt == "Slovak Republic"
+
 replace world_bank_code = "SVN" if country_txt == "Slovenia"
 replace world_bank_code = "SLB" if country_txt == "Solomon Islands"
 replace world_bank_code = "SOM" if country_txt == "Somalia"
@@ -262,7 +265,7 @@ replace world_bank_code = "VEN" if country_txt == "Venezuela"
 replace world_bank_code = "VNM" if country_txt == "Vietnam"
 replace world_bank_code = "VIR" if country_txt == "Virgin Islands (U.S.)"
 
-**** No urbanization data for Wallis and Futuna. Could treat as FRA/France
+**** No urbanization data for Wallis and Futuna (pop 15k). Could treat as FRA/France
 replace world_bank_code = "" if country_txt == "Wallis and Futuna"
 
 replace world_bank_code = "WBG" if country_txt == "West Bank and Gaza Strip"

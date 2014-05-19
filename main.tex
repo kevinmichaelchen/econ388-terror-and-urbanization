@@ -133,7 +133,11 @@ The three urbanization statistics we consider are: absolute urban population, ur
 \subsection{Challenges}
 There are several challenges we face when running a regression that draws from two different datasets.
 First, there is discrepancy between country names: one dataset uses Ivory Coast, the other C\^{o}te d'Ivoir.
+We fix all such discrepancies manually.
+
 Second, some countries are present in one dataset but not in the other. 
+The GTD makes a distinction between countries that have undergone name changes, such as New Hebrides (former name) and Vanuatu (present-day name).
+If the World Bank has data on the present-day country name, we count terrorist incidents in the ``former'' country as incidents in the present-day country.
 
 Third, the GTD makes a distinction between countries that have been dissolved and reunified, whereas the World Bank data does not.
 For instance, the GTD documents terrorist attack data for West Germany, East Germany, and Germany, whereas the World Bank uses Germany.
@@ -142,8 +146,20 @@ In general, however, we ignore terrorist data for former countries that have und
 For instance, we simply ignore attacks that occurred in Yugoslavia, instead of treating them as having occurred in Slovenia, Croatia, Bosnia and Herzegovina, Macedonia, Serbia, and Montenegro. We do this for simplicity, and we acknowledge that it is an imperfection.
 
 Fourth, we deliberate over how to treat terrorist attacks that occurred in overseas territories -- such as Corsica (France), the Falkland Islands (UK), and the Faroe Islands (Denmark).
-We can either ignore incidents, treat them as attacks in the ``mother'' country, or treat them as attacks in one or two of the most proximate nations.
-We treat Corsica and Guadeloupe as France, since they have large populations and are deemed ``integrated''. We ignore all other cases
+We can either ignore these incidents, treat them as attacks in the ``mother'' country, or treat them as attacks in one or two of the most proximate nations.
+We treat Corsica as part of France, as it has a large population and has a substantial terrorist presence.
+By contrast, Guadeloupe or Martinique -- which both have populations larger than Corsica's -- are not treated as France, as they have a low threat of terrorism.
+In general, our decisions are based on a territory's population size and threat level.
+
+Fifth, we make a judgement call on city-states and countries with disputed autonomy.
+Specifically, we count Vatican City as Italy and Taiwan as China.
+This is not a reflection of our political opinions, but a consequence of lacking urbanization data on Vatican City and Taiwan.
+
+Lastly, there is some misalignment over the way both datasets treat the United Kingdom.
+The World Bank data tags its UK data with the Great Britain country code (GBR):
+this would suggest that the World Bank really only has data on Great Britain: that is, Britain, Scotland, and Wales.
+Because the GTD has an abundance of data on terrorist attacks occurring in Northern Ireland -- which was pulled from the Conflict Archive on the INternet -- we treat terrorist attacks in Northern Ireland as having an impact on the urbanization in Great Britain, which is what the World Bank treats as the United Kingdom.
+
 \section{Analysis}
 
 
