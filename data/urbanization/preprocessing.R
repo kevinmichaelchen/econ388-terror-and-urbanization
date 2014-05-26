@@ -32,5 +32,5 @@ renameYears <- function() {
 }
 
 #' Only call this function if
-#renameYears()
+renameYears()
 

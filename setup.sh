@@ -25,7 +25,7 @@ if [[ ! -f $CSV_FILE ]]; then
     # extract it from zip file
     if [[ -f $ZIP_FILE ]]; then
 	echo "Unzipping $ZIP_FILE..."
-	unzip $ZIP_FILE -d .
+	unzip $ZIP_FILE -d $URBAN
     else
 	echo "$ZIP_FILE does not exist..."
     fi
