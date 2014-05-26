@@ -1,58 +1,20 @@
-#' This script is mainly responsible for putting
-#' World Bank country codes in the GTD data.
-#' This reconciles the name discrepancy problem.
-#' The new GTD dataset is saved in new_gtd.csv.
-#' This script should really only be run once
-#' as a preprocessing step. The next step will
-#' be to combine urban statistics with the GTD.
-#' That is, if a terrorist attack occurred in 2005
-#' in Afghanistan, we add a column called
-#' gtd$urban_growth, which corresponds to that 
-#' country's urban growth rate in the year of the attack.
-
-PATH <- "~/Desktop/ECON388/Final/data/"
-GTD_PATH <- paste0(PATH, "gtd/")
-URB_PATH <- paste0(PATH, "urbanization/")
-
-ORIGINAL_URBAN_DATA_PATH <- paste0(URB_PATH, "4df40cf6-9709-4b99-be87-b675b5f3b4c4_Data.csv")
-
-setwd(PATH)
-list.files()
-gtd <- read.csv(paste0(GTD_PATH, "new_gtd.csv"))
-wb <- read.csv(ORIGINAL_URBAN_PATH, check.names=FALSE)
-
-
-#' Used for copying the World Bank dataset to a new csv file
-#' don't add a row.names/numbers column
-#' don't check.names, don't prepend 'X' to all headers
-update <- function() {
-  write.csv(wb, file=paste0(URB_PATH, "new_urban.csv"), row.names=FALSE)
-  df <- read.csv(paste0(URB_PATH, "new_urban.csv"), check.names=FALSE)
-  View(df)
-}
-
-#' Rename world bank columns
-renameYears <- function() {
-  def = c("Country.Name", "Country.Code", "Indicator.Name", "Indicator.Code")
-  years = rep(0, 2012-1970+1)
-  for (i in 1970:2012) {
-    years[i - 1970 + 1] = paste0("Y", as.character(i))
-  }
-  cols = c(def, years)
-  names(wb) <<- cols
-  update()  
-}
-
-#' Only call this function if
-#renameYears()
-
-
-
 #'
-#' STEP 2:
 #' Add World Bank country code column in the GTD dataset
 #' to map GTD country names to World Bank country names.
 #'
+
+#options(echo = TRUE)
+args <- commandArgs(trailingOnly = TRUE)
+print(args)
+
+CSV_WB <- args[1]
+CSV_GTD_OLD <- args[2]
+CSV_GTD_NEW <- args[3]
+
+wb <- read.csv(CSV_WB, check.names=FALSE)
+gtd <- read.csv(CSV_GTD_OLD)
+
+
 
 # Afghanistan is level 1 of World Bank country code factor
 gtd$world_bank_code <- "AFG"
@@ -334,7 +296,5 @@ add_gtd_country_code("ZMB", "Zambia")
 add_gtd_country_code("ZWE", "Zimbabwe")
 
 
-#write.csv(gtd, file=paste0(GTD_PATH, "new_gtd.csv"), row.names=FALSE)
-#new.gtd <- read.csv(paste0(GTD_PATH, "new_gtd.csv"), check.names=FALSE)
-#View(new.gtd)
-#View(gtd)
+write.csv(gtd, file=CSV_GTD_NEW, row.names=FALSE)
+#View(read.csv(paste0(GTD_PATH, "new_gtd.csv"), check.names=FALSE))

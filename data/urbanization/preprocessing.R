@@ -4,18 +4,17 @@
 args <- commandArgs(trailingOnly = TRUE)
 print(args)
 
-ORIGINAL_URBAN_DATA_PATH <- args[1]
-URB_PATH <- args[2]
+OLD_PATH <- args[1]
+NEW_PATH <- args[2]
 
-wb <- read.csv(ORIGINAL_URBAN_DATA_PATH, check.names=FALSE)
+wb <- read.csv(OLD_PATH, check.names=FALSE)
 
 
 #' Used for copying the World Bank dataset to a new csv file
 #' don't add a row.names/numbers column
 #' don't check.names, don't prepend 'X' to all headers
 update <- function() {
-  path = paste0(URB_PATH, "/new_urban.csv")
-  write.csv(wb, file=path, row.names=FALSE)
+  write.csv(wb, file=NEW_PATH, row.names=FALSE)
   #View(read.csv(path, check.names=FALSE))
 }
 
@@ -33,4 +32,3 @@ renameYears <- function() {
 
 #' Only call this function if
 renameYears()
-
