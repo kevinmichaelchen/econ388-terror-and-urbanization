@@ -13,7 +13,7 @@ GTD=$DATA/gtd
 URBAN=$DATA/urbanization
 
 # Path to setup shell script
-SETUP_SCRIPT=$URBAN/setup.sh
+SETUP_SCRIPT=$REPO_ROOT/setup.sh
 
 # Path to reconciliation R script
 RECONCILIATION_SCRIPT=$URBAN/reconciliation.R
@@ -31,13 +31,6 @@ CSV_GTD_NEW=$GTD/new_gtd.csv
 # If the World Bank csv file does not exist, create it
 if [[ ! -f $CSV_WB ]]; then
     `which bash` $SETUP_SCRIPT
-fi
-
-
-# Quit if World Bank csv file is still not created
-if [[ ! -f $CSV_WB ]]; then
-    echo "World Bank CSV file could not be created by $SETUP_SCRIPT..."
-    exit
 fi
 
 

@@ -3,9 +3,15 @@ From Elsevier's *.dtx file, generate the template files, bibliographic styles, d
 
 # World Bank Dataset
 The World Bank data is included in this repo.
-If the csv file does not exist in the `data/urbanization` directory, then run `setup.sh`.
-This will extract the csv data from `data/urbanization/urbanization.zip`, prettify the columns, and save the result into `data/urbanization/new_urban.csv`.
+
+## Step 1
+Run `setup.sh` to extract the csv data from `data/urbanization/urbanization.zip` and write a prettified version of the CSV file into the `data/urbanization` directory.
 
 # Global Terrorism Database
 The GTD is available for download [here](http://www.start.umd.edu/gtd/contact/).
-To reconcile GTD countries with World Bank country codes, run `reconcile.sh`.
+
+## Step 2
+Run `reconcile.sh` to use the prettified World Bank data (which was extracted in Step 1) in order to modify GTD country codes.
+
+## Step 3
+Run `build.sh` to build new columns into the GTD.

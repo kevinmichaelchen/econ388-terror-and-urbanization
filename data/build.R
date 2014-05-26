@@ -1,11 +1,15 @@
-PATH <- "~/Desktop/ECON388/Final/data/"
-GTD_PATH <- paste0(PATH, "gtd/")
-URB_PATH <- paste0(PATH, "urbanization/")
-setwd(PATH)
-list.files()
+#' This script writes columns to the GTD.
+#' Will take a really LONG TIME!
 
-gtd <- read.csv(paste0(GTD_PATH, "new_gtd.csv"))
-wb <- read.csv(paste0(URB_PATH, "new_urban.csv"), check.names=FALSE)
+#options(echo = TRUE)
+args <- commandArgs(trailingOnly = TRUE)
+print(args)
+
+PATH_WB <- args[1]
+PATH_GTD <- args[2]
+
+gtd <- read.csv(PATH_GTD)
+wb <- read.csv(PATH_WB, check.names=FALSE)
 
 #' Extracts all years of data for a given country and indicator.
 #' Or can also just extract one year.
@@ -32,36 +36,12 @@ extract <- function(country.code, indicator.name, year=NA) {
 INDICATORS <- c("Urban population","Urban population (% of total)","Urban population growth (annual %)")
 
 
-#' ATTEMPTING TO PUT WORLD BANK COLUMN IN GTD USING data.table
-#if ("data.table" %in% row.names(installed.packages())  == FALSE) install.packages("data.table") 
-#require("data.table")
-#new.gtd <- data.table(gtd, keep.rownames = TRUE)
-#new.gtd$urban_growth <- NA
-#names(new.gtd)[135]
-#for (row in 1:10) {
-#  wb_code = new.gtd[row,135]
-#  print(wb_code)
-#  year = new.gtd[row,]$iyear
-#  new.gtd[row, urban_growth := extract(wb_code, INDICATORS[3], year)]
-#}
-#View(head(new.gtd)$urban_growth)
-
-
-#' ATTEMPTING TO PUT WORLD BANK COLUMN IN GTD
-#gtd['urban_growth'] <- extract(gtd$world_bank_code, INDICATORS[3], gtd$iyear)
-#gtd$urban_growth <- NA
-
-
-
-
-
-
 start <- Sys.time()
-for (row in 50850:nrow(gtd)) {
+for (row in 1:nrow(gtd)) {
   
   # checkpoint every 1000 rows in case of bomb out
   if (row %% 1000 == 0) {
-    write.csv(gtd, file=paste0(GTD_PATH, "gtd1.csv"), row.names=FALSE)
+    write.csv(gtd, PATH_GTD, row.names=FALSE)
   }
   
   # year is col 2
@@ -83,13 +63,13 @@ for (row in 50850:nrow(gtd)) {
   
 }
 end <- Sys.time()
-write.csv(gtd, file=paste0(GTD_PATH, "gtd1.csv"), row.names=FALSE)
+write.csv(gtd, PATH_GTD, row.names=FALSE)
 
 
 
 
 
-#df = read.csv(paste0(GTD_PATH, "gtd1.csv"), check.names=FALSE)
+#df = read.csv(PATH_GTD, check.names=FALSE)
 #names(df)
 #View(df$world_bank_code)
 #View(df$urban_growth)
