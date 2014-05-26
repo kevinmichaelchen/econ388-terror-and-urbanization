@@ -24,13 +24,13 @@ NEW_CSV_FILE=$URBAN/urban.csv
 
 # If the csv file does not exist...
 if [[ ! -f $CSV_FILE ]]; then
-    echo "$CSV_FILE does not exist..."
+    echo "File not found: $CSV_FILE..."
     # extract it from zip file
     if [[ -f $ZIP_FILE ]]; then
 	echo "Unzipping $ZIP_FILE..."
 	unzip $ZIP_FILE -d $URBAN
     else
-	echo "$ZIP_FILE does not exist..."
+	echo "File not found: $ZIP_FILE..."
     fi
 fi
 
@@ -39,5 +39,5 @@ if [[ -f $CSV_FILE ]]; then
     echo "Preprocessing $CSV_FILE..."
     `which Rscript` $SCRIPT $CSV_FILE $NEW_CSV_FILE
 else
-    echo "$CSV_FILE not found..."
+    echo "File not found: $CSV_FILE..."
 fi

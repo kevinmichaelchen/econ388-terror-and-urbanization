@@ -1,4 +1,10 @@
+#' This script is just for exploration.
+#' Change the PATH variable to the directory
+#' that contains the GTD csv file.
+
 PATH <- "/Users/kmchen1/Desktop/ECON388/Final/data/"
+
+
 setwd(PATH)
 list.files()
 gtd <- read.csv(paste0(PATH, "gtd/gtd.csv"))
