@@ -1,5 +1,6 @@
 \documentclass[preprint,2p,12pt]{elsarticle}
 
+\usepackage{hyperref}
 \usepackage{setspace}
 \journal{Professor Sheppard - ECON 388}
 
@@ -27,7 +28,9 @@ terrorism \sep urbanization \sep urban economics
 \doublespacing
 
 \section*{\sc Acknowledgements}
-Professor Stephen Sheppard. ``National Consortium for the Study of Terrorism and Responses to Terrorism (START). (2012). Global Terrorism Database [Data file]. Retrieved from http://www.start.umd.edu/gtd''
+Thank you, Professor Stephen Sheppard, for your patience and incredible work.
+Also, a shout out to UMD for compiling the \href{http://www.start.umd.edu/gtd}{Global Terrorism Database (GTD)}. 
+
 
 \section{\sc Introduction}
 From an economic perspective, the existence of cities is a result of market equilibria, in which the costs of living in the city equal those of not living in the city.
@@ -184,6 +187,12 @@ While it may be unwise to analyze city-specific data on terrorist attacks -- sin
 \section{\sc Data}
 Unlike Sheppard, we use data on terrorist incidents collected from the Global Terrorism Database (GTD) instead of RAND.
 The GTD offers more than twice as many instances and spans from 1970 to 2012.
+Figure~\ref{hist_attacks} shows the frequency of terrorist attacks over time.
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.5]{images/hist_attacks.png}
+  \caption{\label{hist_attacks}The frequency of attacks has been on the rise since the early 2000s.}
+\end{figure}
 In addition, it provides dozens of more variables describing a terrorist attack's success, weapons, perpetrators, targets, casualties, injuries, and more.
 
 Furthermore, what sets this paper apart from all others is its analysis of the impact of terrorism on urbanization rates.
@@ -226,9 +235,56 @@ This would suggest that the World Bank really only has data on Great Britain: th
 Because the GTD has an abundance of data on terrorist attacks occurring in Northern Ireland -- which was pulled from the Conflict Archive on the INternet -- we treat terrorist attacks in Northern Ireland as having an impact on the urbanization in Great Britain, which is what the World Bank treats as the United Kingdom.
 
 \section{Analysis}
+Due to technical difficulties and struggles with the {\tt R} programming language, our analysis falls short of its originally intended scope.
+Initially we meant to merge the urbanization data with the GTD.
+For instance, for each terrorist attack, there would have been several columns describing the country's urbanization growth rates for the next $n$ years, where $n$ would vary by column.
+This would have allowed us to easily regress, for instance, the urbanization rate in the following decade on the magnitude of a terrorist attack (denoted by {\tt nkill}) or on the type of a terrorist attack (denoted by {\tt attacktype1}).
+Additionally, we could have regressed urbanization rates on the number of successful or unsuccessful attacks per year.
+
+We chose to use {\tt R} due to our inexperience with Stata, and because we preferred {\tt R}'s readability and customizability.
+That said, we may have bitten the bullet on performance, since our method for creating new columns in the GTD took an exorbitant amount of time; indeed, we never actually filled an entire column in.
+For instance, our method for assigning urban growth rates to terrorist attacks for a particular country and year would have had to iterate across 113,113 rows.
+Due to time constraints, it only filled in data for the first 50,000-some rows, providing us with data from 1970 to 1992.
+
+\subsection{Expository Analysis}
+To get a sense of the urbanization growth rate data, see Figure~\ref{boxplot_urban_growth}. The median growth was positive, and there were many positive outliers. However, a fair number of countries that experienced terrorist attacks were experiencing declining urban populations at the time of the attack.
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.4]{images/boxplot_urban_growth}
+  \caption{\label{boxplot_urban_growth}The median urban growth was positive. There are many positive outliers.}
+\end{figure}
+
+\subsection{Do casualties affect urban growth rates?}
+One might expect that countries that experience terrorist attacks in which more people die experience less urban growth. This is not the case, however, as Figure~\ref{plot_nkill_growth} suggests.
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.4]{images/plot_nkill_growth}
+  \caption{\label{plot_nkill_growth}There is no correlation between urbanization growth rates and attack size in terms of casualties.}
+\end{figure}
+
+\subsection{The need for more specific indicators}
+In order to get a more linear relationship, we need to make our response and indicator more specific.
+
+For a response, it might be interesting to make a dummy variable that denotes whether a country was experiencing positive or negative growth rates at the time of an attack.
+
+As for indicators, we see that casualties per attack is not telling.
+What we need to regress on is a sum of attacks or a sum of casualties in the past $n$ years.
+
+This will give us a sense of how the climate of terror -- which has been stoked for the last $n$ years by casualties and attacks, even unsuccessful ones -- affects the current urbanization rate.
+
+Moreover, as hinted at before, we might also think about including a column for not just urbanization growth rates in the particular year of an attack, but an average of the next several years. This is because growth rates take time to adjust. An attack may have an immediate effect on the climate of terror, but it can take time for this climate to have an effect on urbanization. Furthermore, in order to really see urbanization \emph{growth}, you have to measure it over several years.
+
+Making the response variable and indicator variables more specific would be more suitable for exploring our research question.
+For instance, we could run a logistic regression of ``whether a country experiences positive urban growth rate in the next 5 years'' on ``the number of terrorist incidents experienced in that country since 1970.''
+We could even get more specific and distinguish between successful attacks and unseuccessful ones, between bomb-related attacks and non-bomb related ones.
 
 
 \section{Conclusion}
+However, to do all we have mentioned would take several more hours of dataset processing, for which we did not have time.
+Indeed, to fill in one column for all 113,113 rows can take more than 5 hours -- granted, our implementation of this is not the most efficient.
+We are left with a foundation on which others may build.
+
+The repository of my work, to which anyone may contribute, is hosted at \href{https://github.com/kevinchen93/econ388-terror-and-urbanization}{https://github.com/kevinchen93/econ388-terror-and-urbanization}. It includes a zip file of the World Bank urbanization data, but does not include the GTD (which can be downloaded with a simple Google search). Any comments and contributions would be much appreciated.
 
 
 \begin{thebibliography}{9}
