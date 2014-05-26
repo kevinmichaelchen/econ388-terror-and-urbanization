@@ -9,6 +9,7 @@ Run `setup.sh` to extract the csv data from `data/urbanization/urbanization.zip`
 
 # Global Terrorism Database
 The GTD is available for download [here](http://www.start.umd.edu/gtd/contact/).
+It comes in .xlsx format but can be converted into a .csv file using the [xlsx2xcsv](https://github.com/dilshod/xlsx2csv) project.
 
 ## Step 2
 Run `reconcile.sh` to use the prettified World Bank data (which was extracted in Step 1) in order to modify GTD country codes.
