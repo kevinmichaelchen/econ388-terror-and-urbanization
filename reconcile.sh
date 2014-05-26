@@ -48,5 +48,6 @@ if [[ -f $CSV_WB ]]; then
     else
 	echo "File not found: $CSV_GTD_OLD..."
     fi
-echo "File not found: $CSV_WB..."
+else
+    echo "File not found: $CSV_WB..."
 fi
