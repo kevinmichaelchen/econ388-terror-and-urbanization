@@ -1,1 +1,0 @@
-The urbanization data used can be recreated by extracting `urbanization.zip`.
