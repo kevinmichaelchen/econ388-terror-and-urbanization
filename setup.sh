@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Extracts urbanization data from zip file,
+# prettifies the year columns, and saves the
+# result as data/urbanization/urban.csv
+
 # Repository's root
 REPO_ROOT=`pwd`
 
@@ -41,3 +45,7 @@ if [[ -f $CSV_FILE ]]; then
 else
     echo "File not found: $CSV_FILE..."
 fi
+
+
+# SETS UP URBANIZATION DATA
+

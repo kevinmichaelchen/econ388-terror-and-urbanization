@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Reconciles data/gtd/gtd.csv and data/urbanization/urban.csv.
+# Specifically, runs reconciliation.R which adds a World Bank 
+# country code column to the GTD. Saves the resultant GTD as
+# data/gtd/new_gtd.csv
+
 # Repository's root
 REPO_ROOT=`pwd`
 
@@ -18,7 +23,7 @@ SETUP_SCRIPT=$REPO_ROOT/setup.sh
 # Path to reconciliation R script
 RECONCILIATION_SCRIPT=$URBAN/reconciliation.R
 
-# Path to the urban csv file
+# Path to the urban csv file (consistent w/ setup.sh)
 CSV_WB=$URBAN/urban.csv
 
 # Path to the original GTD csv file
@@ -44,3 +49,6 @@ if [[ -f $CSV_WB ]]; then
 else
     echo "File not found: $CSV_WB..."
 fi
+
+# ADDS WORLD BANK COLUMN TO GTD
+
