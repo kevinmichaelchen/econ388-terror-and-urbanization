@@ -10,10 +10,21 @@ Run `setup.sh` to extract the csv data from `data/urbanization/urbanization.zip`
 # Global Terrorism Database
 The GTD is available for download [here](http://www.start.umd.edu/gtd/contact/).
 It comes in *.xlsx* format but we need it in the *.csv* format.
-One way to do this is to download [xlsx2csv](https://github.com/dilshod/xlsx2csv).
-From inside xlsx2csv folder, run `python setup.py`, which should put the *xlsx2csv* command in `/usr/local/bin`.
-Then place the *.xlsx* file in this repository and name it `gtd.xlsx`.
-Then `cd` to this repo and run `xlsx gtd.xlsx data/gtd/gtd.csv`.
+One way to do this is to use the [xlsx2csv](https://github.com/dilshod/xlsx2csv) repo.  
+
+First, `cd` to where the *.xlsx* GTD file is. Then:
+1. `mv gtd.xlsv ~/Desktop
+2. `cd ~/Desktop`
+3. `git clone https://github.com/dilshod/xlsx2csv`
+4. `cd xlsx2csv`
+5. `python setup.py`
+  * This should put the *xlsx2csv* command in `/usr/local/bin`.
+6. `time xlsx ~/Desktop/gtd.xlsx ~/Desktop/gtd.csv`
+  * This takes anywhere from 90 seconds to over 7 minutes.
+7. `mv ~/Desktop/gtd.csv ~/Desktop/econ388-terror-and-urbanization`
+  * Assumes you haven't changed this repository's name.
+  * Assumes this repository is on the desktop.
+
 
 ## Step 2
 Run `reconcile.sh` to create a World Bank Country Code column in the GTD frame.  
